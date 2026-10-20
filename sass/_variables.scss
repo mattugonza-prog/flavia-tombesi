@@ -1,0 +1,71 @@
+// ==========================================
+// TOKENS DE MARCA · Flavia Tombesi · Crianza y Mentalidad
+// Paleta oficial: 9d8bd1 · f7931e · ffb506 · fdf7ec · 3e3742
+// ==========================================
+
+// Colores de marca
+$lavanda: #9d8bd1;
+$naranja: #f7931e;
+$amarillo: #ffb506;
+$crema: #fdf7ec;
+$tinta: #3e3742;
+
+// Variantes derivadas (para texto y fondos con buen contraste)
+$lavanda-oscuro: #5c4aa0;     // Texto destacado sobre crema (6.7:1)
+$lavanda-claro: #e7e1f6;      // Fondo de secciones con texto (9:1 con tinta)
+$naranja-claro: #fde3c4;
+$amarillo-claro: #ffefc4;
+$tinta-profunda: #2e2832;     // Footer
+$texto-suave: #615a66;        // Texto secundario sobre crema (6.2:1)
+$borde: #e8dfcf;
+$borde-fuerte: #cbbfa9;
+$blanco: #ffffff;
+$error: #b4233f;
+
+$fondo: $crema;
+$fondo-alt: #f7efe0;
+
+$whatsapp: #15803d;
+$whatsapp-oscuro: #116932;
+
+// Tipografía: Helvetica (marca) + manuscrita para acentos
+$fuente: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+// Provisoria hasta confirmar la licencia web de "Internet Friends"
+$fuente-manuscrita: 'Gochi Hand', 'Comic Sans MS', cursive;
+
+// Escala tipográfica fluida
+$texto-xs: 0.8125rem;
+$texto-sm: 0.9375rem;
+$texto-base: 1.0625rem;
+$texto-lg: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
+$titulo-sm: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+$titulo-md: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+$titulo-lg: clamp(2.25rem, 1.5rem + 3.4vw, 4.25rem);
+
+// Estructura
+$ancho-maximo: 1160px;
+$gutter: clamp(1rem, 4vw, 2rem);
+$radio-sm: 10px;
+$radio: 18px;
+$radio-pill: 999px;
+
+$seccion-sm: clamp(3rem, 6vw, 4.5rem);
+$seccion: clamp(4rem, 9vw, 7rem);
+
+// Sombras
+$sombra-sm: 0 1px 2px rgba($tinta, 0.06), 0 2px 6px rgba($tinta, 0.06);
+$sombra: 0 2px 4px rgba($tinta, 0.05), 0 10px 28px rgba($tinta, 0.1);
+
+// Movimiento
+$ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$duracion: 0.25s;
+
+// Escala de z-index
+$z-header: 100;
+$z-menu: 110;
+$z-flotante: 200;
+
+// Breakpoints
+$bp-tablet: 768px;
+$bp-desktop: 1024px;

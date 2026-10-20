@@ -1,0 +1,18 @@
+@keyframes aparecerDesdeAbajo {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes entradaSuave {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes girar {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0) rotate(var(--giro, 0deg)); }
+    50% { transform: translateY(-8px) rotate(var(--giro, 0deg)); }
+}

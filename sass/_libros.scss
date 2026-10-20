@@ -1,0 +1,142 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ==========================================
+// PÁGINA: LIBROS (catálogo)
+// ==========================================
+.catalogo {
+    padding-block: 0 $seccion;
+
+    &__aviso {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        padding: 1.25rem 1.5rem;
+        border-radius: $radio;
+        background-color: $lavanda-claro;
+
+        p {
+            max-width: 60ch;
+        }
+    }
+
+    &__grilla {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 2.5rem 1.25rem;
+    }
+}
+
+.libro {
+    display: flex;
+    flex-direction: column;
+
+    // Tapa ilustrada con CSS hasta tener las portadas reales
+    &__tapa {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        aspect-ratio: 2 / 3;
+        overflow: hidden;
+        padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+        border-radius: 6px 14px 14px 6px;
+        background-color: var(--color-tapa);
+        color: $tinta-profunda; // Más oscuro que $tinta para cumplir contraste sobre lavanda
+        box-shadow: inset 10px 0 0 rgba($tinta, 0.12), $sombra;
+        transition: transform $duracion $ease-out;
+
+        &--lavanda { --color-tapa: #{$lavanda}; }
+        &--naranja { --color-tapa: #{$naranja}; }
+        &--amarillo { --color-tapa: #{$amarillo}; }
+        &--tinta { --color-tapa: #{$tinta}; color: $crema; }
+        &--crema { --color-tapa: #{$naranja-claro}; }
+
+        .forma {
+            position: absolute;
+            right: -18%;
+            bottom: -10%;
+            width: 80%;
+            color: $crema;
+            opacity: 0.35;
+        }
+
+        .manuscrita {
+            position: relative;
+            font-size: 1.625rem;
+            line-height: 1.05;
+        }
+
+        small {
+            position: relative;
+            font-size: $texto-xs;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    @include hover {
+        .libro__tapa {
+            transform: translateY(-6px) rotate(-1deg);
+        }
+    }
+
+    h2 {
+        margin-top: 1.25rem;
+        font-size: $titulo-sm;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    &__formato {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.375rem;
+        margin-top: 0.625rem;
+
+        li {
+            padding: 0.125rem 0.625rem;
+            border-radius: $radio-pill;
+            border: 1.5px solid $borde-fuerte;
+            color: $texto-suave;
+            font-size: $texto-xs;
+            font-weight: 700;
+        }
+    }
+
+    > p {
+        margin-top: 0.75rem;
+        color: $texto-suave;
+        font-size: $texto-sm;
+    }
+
+    .boton {
+        margin-top: auto;
+    }
+
+    &__pie {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-block: 1.25rem 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid $borde;
+
+        strong {
+            font-size: $texto-sm;
+        }
+    }
+}

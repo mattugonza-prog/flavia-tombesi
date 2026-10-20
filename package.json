@@ -1,0 +1,15 @@
+{
+  "name": "flavia-tombesi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio de Flavia Tombesi · Crianza y Mentalidad: consultas online, libros y masterclass.",
+  "scripts": {
+    "dev": "serve .",
+    "sass": "sass sass/estilos.scss css/estilos.css --style=compressed",
+    "sass:watch": "sass --watch sass/estilos.scss css/estilos.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0",
+    "serve": "^14.2.6"
+  }
+}

@@ -1,0 +1,85 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// --- FOOTER ---
+.footer-principal {
+    padding-block: $seccion-sm 2rem;
+    background-color: $tinta-profunda;
+    color: rgba($crema, 0.8);
+    font-size: $texto-sm;
+
+    &__grilla {
+        display: grid;
+        gap: 2.5rem;
+
+        @include desde($bp-tablet) {
+            grid-template-columns: 1.4fr 1fr 1fr;
+        }
+    }
+
+    &__marca {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        max-width: 34ch;
+
+        img {
+            width: 170px;
+            height: auto;
+        }
+    }
+
+    &__lema {
+        color: $amarillo;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        color: $crema;
+        font-size: $texto-base;
+        font-weight: 600;
+    }
+
+    ul {
+        display: grid;
+        gap: 0.625rem;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color $duracion $ease-out;
+        @include foco($amarillo);
+
+        @include hover {
+            color: $amarillo;
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+    }
+
+    &__legal {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.5rem 1.5rem;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba($crema, 0.14);
+        font-size: $texto-xs;
+        color: rgba($crema, 0.72);
+
+        a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    }
+}

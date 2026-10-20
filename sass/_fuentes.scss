@@ -1,0 +1,9 @@
+// Manuscrita para acentos (provisoria: Gochi Hand, SIL Open Font License).
+// Helvetica no se descarga: se usa la del sistema (Helvetica en Apple, Arial en Windows/Android).
+@font-face {
+    font-family: 'Gochi Hand';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/gochi-hand.woff2') format('woff2');
+}

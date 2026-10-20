@@ -1,0 +1,135 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ==========================================
+// PÁGINA: MASTERCLASS (próximamente)
+// ==========================================
+.etiqueta-pronto {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 1rem;
+    border-radius: $radio-pill;
+    background-color: $amarillo;
+    color: $tinta;
+    font-weight: 700;
+    font-size: $texto-sm;
+}
+
+// Cuenta regresiva: se activa cuando hay fecha en data-fecha (ver main.js)
+.cuenta {
+    margin-top: 2.5rem;
+
+    // Sin fecha, solo se muestra "Fecha de lanzamiento a confirmar"
+    &:not(.cuenta--activa) {
+        .cuenta__titulo,
+        .cuenta__unidades {
+            display: none;
+        }
+
+        .cuenta__fecha {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: $radio-pill;
+            border: 1.5px dashed $borde-fuerte;
+            font-weight: 700;
+        }
+    }
+
+    &__titulo {
+        color: $texto-suave;
+        font-size: $texto-sm;
+        font-weight: 700;
+    }
+
+    &__unidades {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 0.75rem;
+    }
+
+    &__unidad {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 84px;
+        padding: 0.875rem 0.75rem;
+        border-radius: $radio;
+        background-color: $blanco;
+        border: 1.5px solid $borde;
+
+        &:nth-child(1) { border-color: $lavanda; }
+        &:nth-child(2) { border-color: $naranja; }
+        &:nth-child(3) { border-color: $amarillo; }
+
+        strong {
+            color: $tinta;
+            font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        span {
+            margin-top: 0.375rem;
+            color: $texto-suave;
+            font-size: $texto-xs;
+            font-weight: 700;
+        }
+    }
+
+    &__fecha {
+        margin-top: 0.875rem;
+        color: $texto-suave;
+    }
+}
+
+.avisame {
+    padding-block: $seccion-sm $seccion;
+
+    &__grilla {
+        display: grid;
+        gap: 2.5rem;
+        align-items: start;
+
+        @include desde($bp-desktop) {
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 4rem;
+        }
+    }
+
+    &__info {
+        h2 {
+            @extend %titulo-seccion;
+        }
+
+        p {
+            max-width: 46ch;
+            margin-top: 1rem;
+            color: $texto-suave;
+            font-size: $texto-lg;
+        }
+
+        ul {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+
+            li {
+                display: flex;
+                gap: 0.75rem;
+                align-items: center;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
+                padding: 4px;
+                flex-shrink: 0;
+                border-radius: 50%;
+                background-color: $amarillo;
+                color: $tinta;
+            }
+        }
+    }
+}

@@ -1,0 +1,201 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// --- HEADER Y NAVEGACIÓN ---
+.header-principal {
+    position: sticky;
+    top: 0;
+    z-index: $z-header;
+    background-color: rgba($crema, 0.96);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color $duracion $ease-out, box-shadow $duracion $ease-out;
+
+    // La sombra aparece recién cuando se scrollea (la agrega main.js)
+    &.con-scroll {
+        border-bottom-color: $borde;
+        box-shadow: $sombra-sm;
+    }
+
+    &__barra {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-height: 80px;
+    }
+}
+
+// Marca: logotipo de Flavia Tombesi
+.marca {
+    display: inline-flex;
+    align-items: center;
+    border-radius: $radio-sm;
+
+    img {
+        width: auto;
+        height: 52px;
+
+        @include desde($bp-tablet) {
+            height: 60px;
+        }
+    }
+}
+
+// Botón hamburguesa (solo mobile)
+.menu-toggle {
+    display: none;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: $radio-sm;
+    background: none;
+    cursor: pointer;
+    @include foco;
+
+    .js & {
+        display: grid;
+    }
+
+    @include desde($bp-tablet) {
+        .js & {
+            display: none;
+        }
+    }
+
+    &__icono,
+    &__icono::before,
+    &__icono::after {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $tinta;
+        transition: transform $duracion $ease-out, background-color $duracion $ease-out;
+    }
+
+    &__icono {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        &::before { top: -7px; }
+        &::after { top: 7px; }
+    }
+
+    // Se transforma en una X al abrir
+    &[aria-expanded='true'] .menu-toggle__icono {
+        background-color: transparent;
+
+        &::before { transform: translateY(7px) rotate(45deg); }
+        &::after { transform: translateY(-7px) rotate(-45deg); }
+    }
+}
+
+.nav-principal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+
+    // En mobile (con JS) el menú se despliega debajo del header
+    .js & {
+        @media (max-width: ($bp-tablet - 1px)) {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: $z-menu;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.25rem;
+            padding: 0.75rem $gutter 1.5rem;
+            background-color: $crema;
+            border-bottom: 1px solid $borde;
+            box-shadow: $sombra;
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-8px);
+            transition:
+                opacity $duracion $ease-out,
+                transform $duracion $ease-out,
+                visibility 0s linear $duracion;
+
+            &.abierto {
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0s;
+            }
+
+            .nav-principal__lista {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .nav-principal__lista a {
+                display: block;
+                padding: 0.875rem 0.25rem;
+                border-bottom: 1px solid $borde;
+            }
+
+            .boton {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    &__lista {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 1.5rem;
+
+        a {
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 0;
+            color: $texto-suave;
+            font-weight: 500;
+            transition: color $duracion $ease-out;
+
+            // Subrayado animado (no cambia el peso de la fuente para no mover el layout)
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0.2rem;
+                height: 2px;
+                border-radius: 2px;
+                background-color: $amarillo;
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform $duracion $ease-out;
+            }
+
+            @include hover {
+                color: $tinta;
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+
+            &[aria-current='page'] {
+                color: $tinta;
+                font-weight: 600;
+
+                &::after {
+                    transform: scaleX(1);
+                }
+            }
+        }
+    }
+}

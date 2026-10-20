@@ -1,0 +1,71 @@
+@use 'variables' as *;
+
+// Media queries mobile-first
+@mixin desde($ancho) {
+    @media (min-width: $ancho) {
+        @content;
+    }
+}
+
+// Hover solo en dispositivos con mouse (evita hovers "pegados" en touch)
+@mixin hover {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+// Anillo de foco visible y consistente para todo el sitio
+@mixin foco($color: $tinta) {
+    &:focus-visible {
+        outline: 3px solid $color;
+        outline-offset: 3px;
+    }
+}
+
+// Botones de la marca
+@mixin boton($fondo, $texto, $fondo-hover) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid $fondo;
+    border-radius: $radio-pill;
+    background-color: $fondo;
+    color: $texto;
+    font-family: inherit;
+    font-size: $texto-base;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        background-color $duracion $ease-out,
+        border-color $duracion $ease-out,
+        transform $duracion $ease-out;
+
+    @include hover {
+        background-color: $fondo-hover;
+        border-color: $fondo-hover;
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    @include foco;
+}
+
+// Título de sección compartido
+%titulo-seccion {
+    color: $tinta;
+    font-size: $titulo-md;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}

@@ -1,0 +1,149 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ==========================================
+// PÁGINA: CONSULTAS
+// ==========================================
+
+// Datos clave de la consulta
+.datos-consulta {
+    padding-bottom: $seccion-sm;
+
+    &__lista {
+        display: grid;
+        gap: 1rem;
+
+        @include desde($bp-tablet) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        div {
+            padding: 1.5rem;
+            border-radius: $radio;
+            background-color: $blanco;
+            border: 1.5px solid $borde;
+        }
+
+        dt {
+            color: $texto-suave;
+            font-size: $texto-sm;
+            font-weight: 700;
+        }
+
+        dd {
+            margin: 0.25rem 0 0;
+            color: $tinta;
+            font-size: $titulo-sm;
+            font-weight: 700;
+        }
+    }
+}
+
+// ¿Para quién es?
+.para-quien {
+    padding-block: $seccion;
+    background-color: $fondo-alt;
+
+    &__grilla {
+        display: grid;
+        gap: 1.25rem;
+
+        @include desde($bp-tablet) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    &__columna {
+        padding: clamp(1.5rem, 4vw, 2.25rem);
+        border-radius: $radio;
+        background-color: var(--fondo-columna);
+
+        &--mentalidad { --fondo-columna: #{$lavanda-claro}; --color-check: #{$lavanda}; }
+        &--crianza { --fondo-columna: #{$naranja-claro}; --color-check: #{$naranja}; }
+
+        h3 {
+            font-size: $titulo-sm;
+            font-weight: 700;
+        }
+
+        ul {
+            display: grid;
+            gap: 0.875rem;
+            margin-top: 1.25rem;
+        }
+
+        li {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            padding: 4px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background-color: var(--color-check);
+            color: $tinta;
+        }
+    }
+}
+
+// Reserva
+.reservar {
+    padding-block: $seccion;
+
+    &__grilla {
+        display: grid;
+        gap: 2.5rem;
+        align-items: start;
+
+        @include desde($bp-desktop) {
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 4rem;
+        }
+    }
+
+    &__info {
+        @include desde($bp-desktop) {
+            position: sticky;
+            top: 110px;
+        }
+
+        h2 {
+            @extend %titulo-seccion;
+        }
+
+        > p {
+            max-width: 46ch;
+            margin-top: 1rem;
+            color: $texto-suave;
+            font-size: $texto-lg;
+        }
+    }
+}
+
+// Aclaración: no reemplaza un tratamiento de salud
+.aviso {
+    display: flex;
+    gap: 0.875rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
+    border-radius: $radio;
+    background-color: $amarillo-claro;
+    color: $tinta;
+    font-size: $texto-sm;
+
+    svg {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+        margin-top: 0.125rem;
+    }
+
+    p {
+        margin: 0;
+        color: $tinta;
+        font-size: $texto-sm;
+    }
+}
