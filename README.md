@@ -2,7 +2,7 @@
 
 Sitio web de Flavia Tombesi, docente y coach en Psicología Positiva: consultas online,
 libros y masterclass. Sitio estático (HTML + Sass + JavaScript sin dependencias),
-publicado en Vercel.
+publicado en Cloudflare Pages.
 
 ## Páginas
 
@@ -19,10 +19,28 @@ publicado en Vercel.
 ```bash
 npm install
 npm run sass:watch   # recompila css/estilos.css al guardar
-npm run dev          # sirve el sitio con URLs limpias (como en Vercel)
+npm run dev          # sirve el sitio localmente con URLs limpias
+npm run build        # compila el CSS y arma dist/ con solo los archivos públicos
 ```
 
 Los colores, tipografías y espaciados están en `sass/_variables.scss`.
+
+## Publicación (Cloudflare Pages)
+
+Configuración del proyecto en Cloudflare Pages:
+
+| Opción | Valor |
+|---|---|
+| Framework preset | None |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+- Cada push a `main` publica el sitio automáticamente.
+- `_headers` define caché y cabeceras de seguridad; `_redirects`, las redirecciones.
+  Pages resuelve solo las URLs limpias (`/consultas`) y la página `404.html`.
+- La dirección provisoria es `https://flavia-tombesi.pages.dev`. Al contratar el dominio,
+  reemplazarla en los `<head>` de las páginas, `sitemap.xml`, `robots.txt` y el campo
+  `_next` del formulario de `masterclass.html`.
 
 ## Tareas frecuentes
 

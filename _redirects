@@ -1,0 +1,4 @@
+# Redirecciones de Cloudflare Pages.
+# Las URLs limpias (/consultas en lugar de /consultas.html) y la página 404.html
+# las resuelve Pages automáticamente.
+/index  /  301

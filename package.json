@@ -5,6 +5,7 @@
   "description": "Sitio de Flavia Tombesi · Crianza y Mentalidad: consultas online, libros y masterclass.",
   "scripts": {
     "dev": "serve .",
+    "build": "sass sass/estilos.scss css/estilos.css --style=compressed --no-source-map && node scripts/build.mjs",
     "sass": "sass sass/estilos.scss css/estilos.css --style=compressed",
     "sass:watch": "sass --watch sass/estilos.scss css/estilos.css"
   },
