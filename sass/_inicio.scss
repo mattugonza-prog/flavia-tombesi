@@ -276,6 +276,11 @@
     overflow: hidden;
     padding-block: $seccion;
 
+    // Va pegada a la portada (mismo fondo): sin espacio superior extra
+    .hero + & {
+        padding-top: 0;
+    }
+
     &__grilla {
         display: grid;
         gap: 2.5rem;
