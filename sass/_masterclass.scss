@@ -133,3 +133,25 @@
         }
     }
 }
+
+// Bloque de compra (aparece cuando la masterclass está disponible en catalogo.json)
+.compra-destacada {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.25rem;
+    margin-top: 2rem;
+
+    &__precio {
+        color: $tinta;
+        font-size: $titulo-md;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    &__nota {
+        flex-basis: 100%;
+        color: $texto-suave;
+        font-size: $texto-sm;
+    }
+}

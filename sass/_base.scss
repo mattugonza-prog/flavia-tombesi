@@ -60,6 +60,11 @@ textarea {
     color: inherit;
 }
 
+// El atributo hidden siempre gana, aunque el componente defina su propio display
+[hidden] {
+    display: none !important;
+}
+
 // Listas sin viñetas solo donde se usan como componentes
 .lista-limpia {
     list-style: none;

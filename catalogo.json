@@ -1,0 +1,50 @@
+{
+    "libro-1": {
+        "titulo": "Título del libro 1",
+        "tipo": "ebook",
+        "precio": 0,
+        "archivo": "ebooks/libro-1.pdf",
+        "diasAcceso": 7,
+        "disponible": false
+    },
+    "libro-2": {
+        "titulo": "Título del libro 2",
+        "tipo": "ebook",
+        "precio": 0,
+        "archivo": "ebooks/libro-2.pdf",
+        "diasAcceso": 7,
+        "disponible": false
+    },
+    "libro-3": {
+        "titulo": "Título del libro 3",
+        "tipo": "ebook",
+        "precio": 0,
+        "archivo": "ebooks/libro-3.pdf",
+        "diasAcceso": 7,
+        "disponible": false
+    },
+    "libro-4": {
+        "titulo": "Título del libro 4",
+        "tipo": "ebook",
+        "precio": 0,
+        "archivo": "ebooks/libro-4.pdf",
+        "diasAcceso": 7,
+        "disponible": false
+    },
+    "libro-5": {
+        "titulo": "Título del libro 5",
+        "tipo": "ebook",
+        "precio": 0,
+        "archivo": "ebooks/libro-5.pdf",
+        "diasAcceso": 7,
+        "disponible": false
+    },
+    "masterclass": {
+        "titulo": "Masterclass grabada",
+        "tipo": "video",
+        "precio": 0,
+        "archivo": "masterclass/masterclass.mp4",
+        "diasAcceso": 30,
+        "disponible": false
+    }
+}

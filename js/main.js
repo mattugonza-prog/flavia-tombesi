@@ -144,3 +144,74 @@ if (cuenta && cuenta.dataset.fecha) {
         actualizar();
     }
 }
+
+// --- Página /gracias: confirma el pago y entrega el material ---
+const compra = document.querySelector('[data-compra]');
+
+if (compra) {
+    const params = new URLSearchParams(window.location.search);
+    const idPago = params.get('payment_id') || params.get('collection_id');
+    const ayuda = compra.querySelector('[data-ayuda]');
+
+    const mostrar = (estado) => {
+        compra.querySelectorAll('[data-estado]').forEach((bloque) => {
+            bloque.hidden = bloque.dataset.estado !== estado;
+        });
+        ayuda.hidden = estado === 'verificando';
+    };
+
+    const problema = (titulo, texto) => {
+        if (titulo) compra.querySelector('[data-problema-titulo]').textContent = titulo;
+        if (texto) compra.querySelector('[data-problema-texto]').textContent = texto;
+        mostrar('problema');
+    };
+
+    const fecha = (iso) => new Date(iso).toLocaleDateString('es-AR', {
+        timeZone: 'America/Argentina/Buenos_Aires', day: 'numeric', month: 'long',
+    });
+
+    const MENSAJES = {
+        'no-disponible': ['Este material todavía no está a la venta', 'Escribime por WhatsApp y te aviso cuando esté disponible.'],
+        error: ['No pudimos iniciar el pago', 'Probá de nuevo en unos minutos. Si el problema sigue, escribime por WhatsApp.'],
+        rechazado: ['El pago fue rechazado', 'No se realizó ningún cobro. Podés intentarlo de nuevo con otro medio de pago.'],
+        vencido: ['El acceso a este material venció', 'Escribime por WhatsApp con tu número de operación de Mercado Pago y lo vemos.'],
+        limite: ['Se alcanzó el límite de accesos para esta compra', 'Escribime por WhatsApp con tu número de operación y te ayudo.'],
+    };
+
+    const entregar = (respuesta) => {
+        compra.querySelector('[data-titulo]').textContent = respuesta.titulo;
+        const descarga = compra.querySelector('[data-descarga]');
+        const video = compra.querySelector('[data-video]');
+        const esVideo = respuesta.tipo === 'video';
+
+        descarga.hidden = esVideo;
+        video.hidden = !esVideo;
+        if (esVideo) video.src = respuesta.url;
+        else descarga.href = respuesta.url;
+
+        compra.querySelector('[data-nota]').textContent = esVideo
+            ? `Podés volver a verla abriendo esta misma página hasta el ${fecha(respuesta.accesoHasta)}. Guardá el enlace.`
+            : `Guardá el PDF en tu dispositivo. Si lo necesitás de nuevo, volvé a abrir esta página hasta el ${fecha(respuesta.accesoHasta)}.`;
+        mostrar('aprobado');
+    };
+
+    const verificar = async () => {
+        if (MENSAJES[params.get('estado')]) return problema(...MENSAJES[params.get('estado')]);
+        if (!idPago || idPago === 'null') {
+            if (params.get('status') === 'rejected' || params.get('status') === 'null') return problema(...MENSAJES.rechazado);
+            return problema('No encontramos un pago para confirmar', 'Si ya pagaste, escribime por WhatsApp con el número de operación de Mercado Pago.');
+        }
+
+        try {
+            const respuesta = await fetch(`/api/verificar?payment_id=${encodeURIComponent(idPago)}`).then((r) => r.json());
+            if (respuesta.estado === 'aprobado') return entregar(respuesta);
+            if (respuesta.estado === 'pendiente') return mostrar('pendiente');
+            if (MENSAJES[respuesta.estado]) return problema(...MENSAJES[respuesta.estado]);
+            problema();
+        } catch {
+            problema('No pudimos conectarnos', 'Revisá tu conexión y volvé a cargar esta página. Tu pago no se pierde.');
+        }
+    };
+
+    verificar();
+}

@@ -108,3 +108,87 @@
         margin-top: 2rem;
     }
 }
+
+// ==========================================
+// PÁGINA: GRACIAS (entrega del material comprado)
+// ==========================================
+.gracias {
+    display: grid;
+    place-items: center;
+    min-height: calc(100svh - 80px);
+    padding-block: $seccion-sm;
+
+    &__caja {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 640px;
+        text-align: center;
+    }
+
+    &__estado {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+        animation: aparecerDesdeAbajo 0.6s $ease-out both;
+
+        &[hidden] {
+            display: none;
+        }
+
+        .manuscrita {
+            color: $lavanda-oscuro;
+            font-size: 2.25rem;
+            line-height: 1;
+        }
+
+        h1 {
+            color: $tinta;
+            font-size: $titulo-md;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
+        }
+
+        p {
+            max-width: 46ch;
+            color: $texto-suave;
+            font-size: $texto-lg;
+        }
+
+        .gracias__nota {
+            font-size: $texto-sm;
+        }
+    }
+
+    &__producto {
+        font-weight: 700;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    &__video {
+        width: 100%;
+        border-radius: $radio;
+        background-color: $tinta;
+        box-shadow: $sombra;
+    }
+
+    &__ayuda {
+        margin-top: 2rem;
+    }
+
+    // Indicador de carga mientras se confirma el pago
+    &__cargando {
+        width: 44px;
+        height: 44px;
+        border: 4px solid $lavanda-claro;
+        border-top-color: $lavanda-oscuro;
+        border-radius: 50%;
+        animation: girar 0.9s linear infinite;
+    }
+}

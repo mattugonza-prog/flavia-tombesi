@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /gracias
 
 Sitemap: https://flavia-tombesi.pages.dev/sitemap.xml

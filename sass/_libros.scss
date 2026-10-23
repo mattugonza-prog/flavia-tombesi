@@ -122,7 +122,9 @@
         font-size: $texto-sm;
     }
 
-    .boton {
+    // El botón (o el formulario de compra) queda siempre al pie de la tarjeta
+    > .boton,
+    > .compra {
         margin-top: auto;
     }
 
@@ -136,7 +138,13 @@
         border-top: 1px solid $borde;
 
         strong {
-            font-size: $texto-sm;
+            font-size: $texto-lg;
+        }
+
+        span {
+            color: $texto-suave;
+            font-size: $texto-xs;
+            font-weight: 700;
         }
     }
 }
