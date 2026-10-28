@@ -91,6 +91,17 @@ Localmente, crear un archivo `.dev.vars` (ignorado por Git) con `MP_ACCESS_TOKEN
   campo `_next` de `masterclass.html`.
 - En el bucket queda `ebooks/libro-1.pdf` de prueba: reemplazarlo por el libro real.
 
+### Próxima etapa: integración con HubSpot (CRM gratuito)
+
+Pedido del 28/10/2026, a encarar cuando la venta esté operativa:
+- Compras: al confirmar un pago, crear o actualizar el contacto (email y nombre que informa
+  Mercado Pago) y registrar el producto y el monto.
+- Lista de espera de la masterclass: enviar también los datos a HubSpot.
+- Consultas: evaluar registrar nombre y tema antes de abrir WhatsApp.
+- Requisitos: casilla de consentimiento para emails de difusión, actualizar la política de
+  privacidad (HubSpot como proveedor) y guardar el token de HubSpot como secreto en Cloudflare.
+- Verificar los límites vigentes del plan gratuito de HubSpot antes de empezar.
+
 ### Publicar un producto
 
 1. Subir el archivo a R2 (*R2 → flavia-material → Upload*) con la ruta indicada en `catalogo.json`
