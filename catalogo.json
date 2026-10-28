@@ -2,10 +2,10 @@
     "libro-1": {
         "titulo": "Título del libro 1",
         "tipo": "ebook",
-        "precio": 100,
+        "precio": 0,
         "archivo": "ebooks/libro-1.pdf",
         "diasAcceso": 7,
-        "disponible": true
+        "disponible": false
     },
     "libro-2": {
         "titulo": "Título del libro 2",
