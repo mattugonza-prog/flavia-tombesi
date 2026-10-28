@@ -80,6 +80,17 @@ Si alguien pagó y perdió la página, Flavia puede pedirle el número de operac
 Para probar sin dinero real, usar las credenciales de prueba de Mercado Pago y sus usuarios de prueba.
 Localmente, crear un archivo `.dev.vars` (ignorado por Git) con `MP_ACCESS_TOKEN` y `FIRMA_SECRETA`.
 
+### Estado actual y pendientes para abrir la venta
+
+- La compra se probó de punta a punta (28/10/2026) con credenciales **de prueba** de Mercado Pago.
+- `MP_ACCESS_TOKEN` sigue siendo el **de prueba** hasta que Flavia tenga el dominio oficial.
+  Al pasar a producción: en Mercado Pago Developers (cuenta real de Flavia) → *Credenciales* →
+  pestaña **Productivas** → copiar el **Access Token** (no la Public Key) → reemplazarlo en
+  Cloudflare (*Settings → Variables and Secrets*, entorno Production) → *Retry deployment*.
+- Con el dominio, actualizar además la dirección en los `<head>`, `sitemap.xml`, `robots.txt` y el
+  campo `_next` de `masterclass.html`.
+- En el bucket queda `ebooks/libro-1.pdf` de prueba: reemplazarlo por el libro real.
+
 ### Publicar un producto
 
 1. Subir el archivo a R2 (*R2 → flavia-material → Upload*) con la ruta indicada en `catalogo.json`
